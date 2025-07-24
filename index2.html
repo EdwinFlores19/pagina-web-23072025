@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edwin Flores - SAP S/4HANA Consultant & Solution Architect</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sap-blue: #0FAAFF;
+            --dark-gray: #1E1E1E;
+            --pure-white: #FFFFFF;
+            --lime-green: #A3E635;
+            --light-gray: #F5F5F5;
+            --text-gray: #6B7280;
+            --gradient-primary: linear-gradient(135deg, var(--sap-blue) 0%, #0080CC 100%);
+            --gradient-accent: linear-gradient(135deg, var(--lime-green) 0%, #7DD321 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: var(--pure-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--sap-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--pure-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--lime-green);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--lime-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .dark-mode-toggle {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(15, 170, 255, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #2D2D2D 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .hero-text .highlight {
+            color: var(--lime-green);
+            font-weight: 600;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--pure-white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(15, 170, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--lime-green);
+            border: 2px solid var(--lime-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--lime-green);
+            color: var(--dark-gray);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .tech-circle {
+            width: 400px;
+            height: 400px;
+            border: 2px solid var(--sap-blue);
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+
+        .tech-circle::before {
+            content: 'SAP S/4HANA';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--sap-blue);
+            text-align: center;
+        }
+
+        .tech-orbit {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .tech-orbit:nth-child(2) { top: -30px; left: 50%; transform: translateX(-50%); }
+        .tech-orbit:nth-child(3) { top: 50%; right: -30px; transform: translateY(-50%); }
+        .tech-orbit:nth-child(4) { bottom: -30px; left: 50%; transform: translateX(-50%); }
+        .tech-orbit:nth-child(5) { top: 50%; left: -30px; transform: translateY(-50%); }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-card {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(15, 170, 255, 0.4);
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--pure-white);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--sap-blue);
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: var(--pure-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(15, 170, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .projects-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .projects-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card {
+            min-width: 350px;
+            background: var(--pure-white);
+            margin: 0 1rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-sector {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-result {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-modules {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .module-tag {
+            background: var(--lime-green);
+            color: var(--dark-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(15, 170, 255, 0.4);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 0;
+            background: var(--pure-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--sap-blue);
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            color: var(--text-gray);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            color: var(--dark-gray);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: var(--dark-gray);
+            color: var(--pure-white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--pure-white);
+        }
+
+        .contact-info p {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            space-y: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--pure-white);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pure-white);
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sap-blue);
+            box-shadow: 0 0 0 2px rgba(15, 170, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--pure-white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: var(--lime-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tech-circle {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            --pure-white: #1E1E1E;
+            --light-gray: #2D2D2D;
+            --dark-gray: #FFFFFF;
+            --text-gray: #B0B0B0;
+        }
+
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #0A0A0A 0%, var(--pure-white) 100%);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Edwin Flores</div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Acerca</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>Edwin Flores<br><span class="highlight">SAP S/4HANA</span><br>Consultant</h1>
+                    <p class="subtitle">Especialista en migraciones, automatización y optimización de procesos SAP para empresas líderes de <span class="highlight">Latinoamérica</span>.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Descargar CV</a>
+                        <a href="#contact" class="btn-secondary">Agendar Consulta</a>
+                    </div>
+                </div>
+                <div class="hero-visual fade-in">
+                    <div class="tech-circle">
+                        <div class="tech-orbit">MM</div>
+                        <div class="tech-orbit">FI</div>
+                        <div class="tech-orbit">PS</div>
+                        <div class="tech-orbit">ALM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <div class="about-image">
+                    <div class="profile-card">
+                        <div class="profile-avatar">EF</div>
+                        <h3>Edwin Flores</h3>
+                        <p>SAP Solution Architect</p>
+                        <div class="social-links">
+                            <a href="#" title="LinkedIn">in</a>
+                            <a href="#" title="GitHub">gh</a>
+                            <a href="#" title="Email">@</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>Experiencia que Transforma</h2>
+                    <p>Con más de 5 años de experiencia especializada en proyectos SAP S/4HANA, he liderado implementaciones críticas en sectores de minería, energía e industria a través de Latinoamérica, incluyendo proyectos exitosos en Perú y México.</p>
+                    <p>Mi expertise abarca desde migraciones complejas de SAP ECC a S/4HANA hasta la implementación de soluciones innovadoras utilizando Cloud ALM, desarrollo ABAP, Python y R para optimización de procesos empresariales.</p>
+                    <p>Combino conocimiento técnico profundo con visión estratégica, integrando tecnologías emergentes como IA y automatización para maximizar el ROI de las inversiones SAP.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Años de Experiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Proyectos Completados</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Países de Operación</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Servicios Especializados</h2>
+                <p>Soluciones SAP integrales que impulsan la transformación digital de tu empresa</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">S4</div>
+                    <h3>Migración SAP ECC a S/4HANA</h3>
+                    <p>Transición completa y sin interrupciones de tus sistemas legacy a la nueva plataforma S/4HANA, incluyendo análisis de impacto, preparación de datos y go-live optimizado.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">MM</div>
+                    <h3>Consultoría MM, FI, PS</h3>
+                    <p>Implementación y optimización de módulos core de SAP: Materials Management, Financial Accounting y Project Systems con enfoque en mejores prácticas industriales.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚡</div>
+                    <h3>SAP Activate & Cloud ALM</h3>
+                    <p>Metodología ágil SAP Activate para implementaciones rápidas y efectivas, complementada con Application Lifecycle Management en la nube.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">💻</div>
+                    <h3>Desarrollo ABAP, Python y R</h3>
+                    <p>Desarrollo custom y integraciones avanzadas utilizando ABAP, Python para automatización y R para analytics avanzados e inteligencia de negocios.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎓</div>
+                    <h3>Training y Capacitación</h3>
+                    <p>Programas de capacitación técnica y funcional personalizados para equipos internos, incluyendo best practices y metodologías de trabajo SAP.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🤖</div>
+                    <h3>IA y Automatización SAP</h3>
+                    <p>Integración de tecnologías de inteligencia artificial y automatización de procesos para optimizar workflows y reducir tareas manuales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Casos de Éxito</h2>
+                <p>Proyectos que demuestran expertise técnico y resultados medibles</p>
+            </div>
+            <div class="projects-carousel">
+                <div class="projects-track" id="projectsTrack">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Migración S/4HANA - MINSUR</h3>
+                            <p class="project-sector">Minería • Perú</p>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-result">Migración completa de SAP ECC a S/4HANA ejecutada en 3 meses con 25% de reducción en incidencias post go-live. Implementación de nuevos procesos de gestión de inventarios y optimización financiera.</p>
+                            <div class="project-modules">
+                                <span class="module-tag">MM</span>
+                                <span class="module-tag">FI</span>
+                                <span class="module-tag">S/4HANA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Implementación Cloud ALM - Energía Solar</h3>
+                            <p class="project-sector">Energía • México</p>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-result">Despliegue de SAP Cloud ALM para gestión de proyectos de infraestructura energética, logrando 40% de mejora en tiempo de respuesta y trazabilidad completa de activos.</p>
+                            <div class="project-modules">
+                                <span class="module-tag">PS</span>
+                                <span class="module-tag">ALM</span>
+                                <span class="module-tag">Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Automatización con IA - Manufactura</h3>
+                            <p class="project-sector">Industria • Perú</p>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-result">Desarrollo de solución de automatización inteligente usando Python y R integrado con SAP, reduciendo 60% el tiempo de procesamiento de órdenes de compra y mejorando la precisión del forecasting.</p>
+                            <div class="project-modules">
+                                <span class="module-tag">ABAP</span>
+                                <span class="module-tag">Python</span>
+                                <span class="module-tag">IA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Integración Multi-Planta - Grupo Industrial</h3>
+                            <p class="project-sector">Manufactura • México</p>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-result">Unificación de 5 plantas industriales bajo una sola instancia S/4HANA, estandarizando procesos y logrando visibilidad financiera consolidada en tiempo real.</p>
+                            <div class="project-modules">
+                                <span class="module-tag">FI</span>
+                                <span class="module-tag">MM</span>
+                                <span class="module-tag">Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn" onclick="moveCarousel(-1)">‹</button>
+                <button class="carousel-btn" onclick="moveCarousel(1)">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Lo que Dicen los Clientes</h2>
+                <p>Testimonios de líderes empresariales que han transformado sus organizaciones</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">Edwin lideró nuestra migración a S/4HANA con una expertise excepcional. Su enfoque metodológico y conocimiento técnico profundo nos permitió completar el proyecto 2 semanas antes de lo programado, sin interrupciones operativas.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CM</div>
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>IT Director - MINSUR</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">La implementación de Cloud ALM que Edwin dirigió transformó completamente nuestra gestión de proyectos. Su visión estratégica y capacidad de integrar nuevas tecnologías nos posicionó como líderes en innovación digital.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">LR</div>
+                        <div class="author-info">
+                            <h4>Laura Rodríguez</h4>
+                            <p>Operations Manager - SolarTech México</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">Edwin no solo implementó SAP, sino que revolucionó nuestros procesos con automatización inteligente. Los resultados superaron todas nuestras expectativas: 60% reducción en tiempo de procesamiento y ROI del 300% en el primer año.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JV</div>
+                        <div class="author-info">
+                            <h4>Jorge Vargas</h4>
+                            <p>CEO - IndustriasPeru</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" style="padding: 6rem 0; background: var(--light-gray);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Insights Técnicos</h2>
+                <p>Artículos especializados sobre SAP, automatización y tendencias tecnológicas</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3>SAP S/4HANA: Mejores Prácticas para Migración</h3>
+                    <p>Guía completa sobre estrategias de migración, desde la evaluación inicial hasta el go-live exitoso. Incluye checklist detallado y lecciones aprendidas de proyectos reales.</p>
+                    <a href="#" style="color: var(--sap-blue); text-decoration: none; font-weight: 600;">Leer más →</a>
+                </article>
+                <article class="service-card fade-in">
+                    <div class="service-icon">🤖</div>
+                    <h3>Automatización Inteligente en SAP con IA</h3>
+                    <p>Cómo integrar tecnologías de Machine Learning y RPA en procesos SAP existentes para maximizar eficiencia operativa y reducir errores manuales.</p>
+                    <a href="#" style="color: var(--sap-blue); text-decoration: none; font-weight: 600;">Leer más →</a>
+                </article>
+                <article class="service-card fade-in">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud ALM: El Futuro de la Gestión SAP</h3>
+                    <p>Análisis profundo de SAP Cloud Application Lifecycle Management y su impacto en la transformación digital empresarial. Casos de uso y ROI esperado.</p>
+                    <a href="#" style="color: var(--sap-blue); text-decoration: none; font-weight: 600;">Leer más →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content fade-in">
+                <div class="contact-info">
+                    <h2>Transformemos tu Empresa</h2>
+                    <p>¿Listo para llevar tu organización al siguiente nivel con SAP S/4HANA? Agenda una consulta gratuita y descubre cómo podemos optimizar tus procesos empresariales.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>Ubicación</h4>
+                                <p>Lima, Perú</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <h4>WhatsApp Business</h4>
+                                <p>+51 999 888 777</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <h4>Email Profesional</h4>
+                                <p>edwin.flores@sapexpert.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company" placeholder="Nombre de tu empresa" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="tu@empresa.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Cuéntanos sobre tu proyecto o necesidad SAP..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Solicitar Asesoría Gratuita</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Edwin Flores</h3>
+                    <p>SAP S/4HANA Consultant & Solution Architect especializado en transformación digital empresarial para sectores de minería, energía e industria.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <p><a href="#services">Migración SAP S/4HANA</a></p>
+                    <p><a href="#services">Consultoría MM, FI, PS</a></p>
+                    <p><a href="#services">Cloud ALM</a></p>
+                    <p><a href="#services">Desarrollo ABAP & Python</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Recursos</h3>
+                    <p><a href="#testimonials">Casos de Éxito</a></p>
+                    <p><a href="#blog">Blog Técnico</a></p>
+                    <p><a href="#contact">Agenda Consulta</a></p>
+                    <p><a href="#">Política de Privacidad</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Conecta</h3>
+                    <p><a href="#">LinkedIn</a></p>
+                    <p><a href="#">GitHub</a></p>
+                    <p><a href="#">WhatsApp Business</a></p>
+                    <p><a href="mailto:edwin.flores@sapexpert.com">Email</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Edwin Flores - SAP S/4HANA Consultant. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animation
+        gsap.timeline()
+            .from(".hero-text", { duration: 1, y: 50, opacity: 0, ease: "power2.out" })
+            .from(".hero-visual", { duration: 1, x: 50, opacity: 0, ease: "power2.out" }, "-=0.5");
+
+        // Scroll Animations
+        gsap.utils.toArray(".fade-in").forEach((element) => {
+            gsap.fromTo(element, 
+                { y: 50, opacity: 0 }, 
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Service Cards Hover Animation
+        gsap.utils.toArray(".service-card").forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+                gsap.to(card, { duration: 0.3, y: -10, ease: "power2.out" });
+            });
+            
+            card.addEventListener("mouseleave", () => {
+                gsap.to(card, { duration: 0.3, y: 0, ease: "power2.out" });
+            });
+        });
+
+        // Projects Carousel
+        let currentProject = 0;
+        const projectsTrack = document.getElementById('projectsTrack');
+        const projectCards = document.querySelectorAll('.project-card');
+        const totalProjects = projectCards.length;
+
+        function moveCarousel(direction) {
+            currentProject += direction;
+            
+            if (currentProject >= totalProjects - 2) {
+                currentProject = totalProjects - 3;
+            }
+            if (currentProject < 0) {
+                currentProject = 0;
+            }
+            
+            const translateX = -currentProject * (350 + 16); // card width + margin
+            gsap.to(projectsTrack, { duration: 0.5, x: translateX, ease: "power2.out" });
+        }
+
+        // Auto-scroll projects
+        setInterval(() => {
+            if (currentProject >= totalProjects - 3) {
+                currentProject = -1;
+            }
+            moveCarousel(1);
+        }, 5000);
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            const toggleBtn = document.querySelector('.dark-mode-toggle');
+            toggleBtn.textContent = isDark ? '☀️' : '🌙';
+        }
+
+        // Load dark mode preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (savedDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.dark-mode-toggle').textContent = '☀️';
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation Background on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(30, 30, 30, 0.98)';
+            } else {
+                nav.style.background = 'rgba(30, 30, 30, 0.95)';
+            }
+        });
+
+        // Contact Form Animation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Enviando...';
+            button.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                button.textContent = '¡Mensaje Enviado! ✓';
+                button.style.background = 'var(--gradient-accent)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    button.style.background = 'var(--gradient-primary)';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Add floating animation to tech orbits
+        gsap.to(".tech-orbit:nth-child(2)", {
+            y: -10,
+            duration: 2,
+            ease: "power2.inOut",
+            yoyo: true,
+            repeat: -1
+        });
+
+        gsap.to(".tech-orbit:nth-child(3)", {
+            x: 10,
+            duration: 2.5,
+            ease: "power2.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: 0.5
+        });
+
+        gsap.to(".tech-orbit:nth-child(4)", {
+            y: 10,
+            duration: 2.2,
+            ease: "power2.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: 1
+        });
+
+        gsap.to(".tech-orbit:nth-child(5)", {
+            x: -10,
+            duration: 2.8,
+            ease: "power2.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: 1.5
+        });
+
+        // Stats Counter Animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            const targets = [5, 50, 3]; // Target numbers for each stat
+            
+            stats.forEach((stat, index) => {
+                gsap.to({ val: 0 }, {
+                    val: targets[index],
+                    duration: 2,
+                    ease: "power2.out",
+                    onUpdate: function() {
+                        stat.textContent = Math.floor(this.targets()[0].val) + (index === 0 ? '+' : index === 1 ? '+' : '');
+                    },
+                    scrollTrigger: {
+                        trigger: stat,
+                        start: "top 80%",
+                        once: true
+                    }
+                });
+            });
+        }
+
+        // Initialize stats animation
+        animateStats();
+
+        // Parallax effect for hero background
+        gsap.to(".hero::before", {
+            yPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            gsap.to('.hero', { duration: 1, opacity: 1, ease: 'power2.out' });
+        });
+    </script>
+</body>
+</html>
