@@ -1,0 +1,571 @@
+import React, { useState, useEffect } from 'react';
+
+// Importar iconos de Lucide React
+// Nota: En un entorno de desarrollo real con npm/yarn, instalarías lucide-react:
+// npm install lucide-react
+// Para este ejemplo de un solo archivo, simularemos la importación o usaremos SVGs inline si es necesario.
+// Para este entorno, usaremos un CDN para Lucide Icons si es posible, o SVGs inline.
+// Para simplificar y asegurar que funcione en el entorno, usaré SVGs inline para los iconos clave.
+
+// Componente principal de la aplicación
+const App = () => {
+  // Estado para controlar el modo oscuro
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Efecto para aplicar la clase 'dark' al body o html cuando cambia el modo oscuro
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+  // Función para alternar el modo oscuro
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Iconos SVG inline para evitar dependencias externas en este entorno de un solo archivo
+  const IconLinkedIn = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+
+  const IconGithub = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github">
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.44-.78-3.46 0 0-1 0-2 1-1.2-.33-2.4-.33-3.6 0-1-1-2-1-2-1-.5.92-.92 2.12-.78 3.46 0 3.5 3 5.5 6 5.5A4.8 4.8 0 0 0 15 18v4" />
+      <path d="M9 18c-4.5 1.2-5-5-5-5" />
+      <path d="M12 15V3" />
+      <path d="M12 3a4 4 0 0 0-4 4v.5" />
+      <path d="M12 3a4 4 0 0 1 4 4v.5" />
+    </svg>
+  );
+
+  const IconBriefcase = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-briefcase">
+      <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </svg>
+  );
+
+  const IconSettings = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-settings">
+      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.78 1.28a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.78 1.28a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V22a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.78-1.28a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.78-1.28a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V2a2 2 0 0 0-2-2z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+
+  const IconCloud = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-cloud">
+      <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+    </svg>
+  );
+
+  const IconCode = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-code">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  );
+
+  const IconGraduationCap = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-graduation-cap">
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+      <path d="M6 12v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4" />
+    </svg>
+  );
+
+  const IconChevronRight = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-right">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
+  );
+
+  const IconMail = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail">
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+
+  const IconMapPin = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-map-pin">
+      <path d="M12 18.7c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="M4 12H2" />
+      <path d="M22 12h-2" />
+      <path d="M19.7 4.3L17.3 6.7" />
+      <path d="M4.3 19.7L6.7 17.3" />
+      <path d="M19.7 19.7L17.3 17.3" />
+      <path d="M4.3 4.3L6.7 6.7" />
+    </svg>
+  );
+
+  const IconMessageCircle = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-message-circle">
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+    </svg>
+  );
+
+  const IconMoon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-moon">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+    </svg>
+  );
+
+  const IconSun = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-sun">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="M4.93 4.93l1.41 1.41" />
+      <path d="M17.66 17.66l1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="M4.93 19.07l1.41-1.41" />
+      <path d="M17.66 6.34l1.41-1.41" />
+    </svg>
+  );
+
+  return (
+    // Contenedor principal de la aplicación.
+    // bg-white por defecto, bg-gray-900 en modo oscuro.
+    // text-gray-900 por defecto, text-white en modo oscuro.
+    // Fuente Inter desde Google Fonts (se asume que está cargada en el HTML principal).
+    <div className={`font-['Inter'] ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition-colors duration-300`}>
+      {/* Botón para alternar el modo oscuro */}
+      <button
+        onClick={toggleDarkMode}
+        className="fixed top-4 right-4 p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white shadow-lg z-50 transition-all duration-300 hover:scale-105"
+        aria-label="Toggle dark mode"
+      >
+        {darkMode ? <IconSun /> : <IconMoon />}
+      </button>
+
+      {/* Sección Hero/Landing */}
+      <section
+        id="hero"
+        className="relative h-screen flex items-center justify-center text-center overflow-hidden bg-cover bg-center"
+        style={{
+          backgroundImage: `url('https://placehold.co/1920x1080/0FAAFF/FFFFFF?text=Fondo+Empresarial+Desenfoque')`, // Placeholder de imagen
+          backgroundAttachment: 'fixed' // Efecto parallax sutil
+        }}
+      >
+        {/* Capa de superposición para mejorar la legibilidad del texto */}
+        <div className="absolute inset-0 bg-gray-900 bg-opacity-70 dark:bg-opacity-80"></div>
+        <div className="relative z-10 p-8 max-w-4xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4 animate-fade-in-up">
+            Edwin Flores — <span className="text-[#0FAAFF]">SAP S/4HANA Consultant & Solution Architect</span>
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 animate-fade-in-up delay-200">
+            Especialista en migraciones, automatización y optimización de procesos SAP para empresas líderes de Latinoamérica.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-400">
+            <a
+              href="#contact" // Enlace a la sección de contacto o a un CV real
+              className="bg-[#0FAAFF] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-600 transition-all duration-300 shadow-lg transform hover:scale-105"
+            >
+              Descargar CV
+            </a>
+            <a
+              href="#contact"
+              className="border-2 border-[#A3E635] text-[#A3E635] px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#A3E635] hover:text-gray-900 transition-all duration-300 shadow-lg transform hover:scale-105"
+            >
+              Agendar Consulta
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Sobre Mí */}
+      <section id="about" className="py-16 sm:py-24 bg-[#F5F5F5] dark:bg-[#1E1E1E] transition-colors duration-300">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white animate-fade-in">Sobre Mí</h2>
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="md:w-1/3 flex justify-center animate-fade-in-left">
+              <img
+                src="https://placehold.co/400x400/0FAAFF/FFFFFF?text=Foto+Profesional" // Placeholder de foto profesional
+                alt="Edwin Flores - Consultor SAP S/4HANA"
+                className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-xl border-4 border-[#0FAAFF]"
+              />
+            </div>
+            <div className="md:w-2/3 text-center md:text-left animate-fade-in-right">
+              <p className="text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300">
+                Con más de <span className="font-semibold text-[#0FAAFF]">+5 años de experiencia</span> en proyectos SAP S/4HANA (Cloud & On-Premise) en Perú y México, mi enfoque es transformar las operaciones empresariales a través de soluciones SAP eficientes y escalables.
+              </p>
+              <p className="text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300">
+                Soy un especialista en los módulos <span className="font-semibold text-[#0FAAFF]">MM, FI, PS y tengo una profunda comprensión de SAP Cloud ALM</span>, combinando esta experiencia técnica con el uso de Inteligencia Artificial para automatizar y optimizar procesos.
+              </p>
+              <div className="flex justify-center md:justify-start gap-6 mt-8">
+                <a href="https://linkedin.com/in/edwinflores" target="_blank" rel="noopener noreferrer" className="text-gray-700 dark:text-white hover:text-[#0FAAFF] dark:hover:text-[#0FAAFF] transition-colors duration-300 transform hover:scale-110">
+                  <IconLinkedIn />
+                </a>
+                <a href="https://github.com/edwinflores" target="_blank" rel="noopener noreferrer" className="text-gray-700 dark:text-white hover:text-[#0FAAFF] dark:hover:text-[#0FAAFF] transition-colors duration-300 transform hover:scale-110">
+                  <IconGithub />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Servicios */}
+      <section id="services" className="py-16 sm:py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white animate-fade-in">Mis Servicios</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Tarjeta de Servicio 1 */}
+            <div className="bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up">
+              <div className="text-[#0FAAFF] mb-4 text-5xl flex justify-center">
+                <IconBriefcase />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">Migración SAP ECC a S/4HANA</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-center">Estrategias de migración 'Brownfield' y 'Greenfield' para una transición fluida y sin interrupciones, asegurando la continuidad del negocio.</p>
+            </div>
+            {/* Tarjeta de Servicio 2 */}
+            <div className="bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up delay-100">
+              <div className="text-[#0FAAFF] mb-4 text-5xl flex justify-center">
+                <IconSettings />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">Consultoría MM, FI, PS</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-center">Implementación, soporte y optimización de módulos clave para mejorar la gestión financiera, de materiales y de proyectos en tu organización.</p>
+            </div>
+            {/* Tarjeta de Servicio 3 */}
+            <div className="bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up delay-200">
+              <div className="text-[#0FAAFF] mb-4 text-5xl flex justify-center">
+                <IconCloud />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">SAP Activate & Cloud ALM</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-center">Aplicación de metodologías ágiles para acelerar proyectos de implementación y asegurar la gestión del ciclo de vida de las aplicaciones SAP.</p>
+            </div>
+            {/* Tarjeta de Servicio 4 */}
+            <div className="bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up delay-300">
+              <div className="text-[#0FAAFF] mb-4 text-5xl flex justify-center">
+                <IconCode />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">Desarrollo ABAP, Python y R</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-center">Desarrollo de soluciones personalizadas, integraciones y scripts de automatización para potenciar tu ecosistema SAP.</p>
+            </div>
+            {/* Tarjeta de Servicio 5 */}
+            <div className="bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up delay-400">
+              <div className="text-[#0FAAFF] mb-4 text-5xl flex justify-center">
+                <IconGraduationCap />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center">Training y Capacitación</h3>
+              <p className="text-gray-700 dark:text-gray-300 text-center">Talleres y capacitaciones personalizadas para tu equipo, asegurando la adopción y el manejo correcto de las nuevas soluciones SAP.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Proyectos y Casos de Éxito */}
+      <section id="projects" className="py-16 sm:py-24 bg-[#F5F5F5] dark:bg-[#1E1E1E] transition-colors duration-300">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white animate-fade-in">Proyectos & Casos de Éxito</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Tarjeta de Proyecto 1 */}
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up">
+              <h3 className="text-xl font-semibold text-[#0FAAFF] mb-2">Migración S/4HANA - MINSUR</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Sector: Minería</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">Migración completada en 3 meses con 25% de reducción en incidencias post go-live, optimizando los procesos de MM y FI.</p>
+              <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm font-medium">
+                <IconSettings className="mr-2 text-[#A3E635]" /> Módulos: MM, FI
+              </div>
+            </div>
+            {/* Tarjeta de Proyecto 2 */}
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up delay-100">
+              <h3 className="text-xl font-semibold text-[#0FAAFF] mb-2">Optimización de Procesos - ENERGÍA PERÚ</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Sector: Energía</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">Implementación de SAP PS para la gestión de proyectos de infraestructura, logrando una mejora del 15% en la eficiencia de ejecución.</p>
+              <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm font-medium">
+                <IconSettings className="mr-2 text-[#A3E635]" /> Módulo: PS
+              </div>
+            </div>
+            {/* Tarjeta de Proyecto 3 */}
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up delay-200">
+              <h3 className="text-xl font-semibold text-[#0FAAFF] mb-2">Automatización de Reportes - INDUSTRIA ACEROS</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Sector: Industria</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">Desarrollo de soluciones ABAP y Python para automatizar reportes financieros, reduciendo el tiempo de procesamiento en un 40%.</p>
+              <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm font-medium">
+                <IconCode className="mr-2 text-[#A3E635]" /> Tecnología: ABAP, Python
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Testimonios */}
+      <section id="testimonials" className="py-16 sm:py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white animate-fade-in">Testimonios</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Testimonio 1 */}
+            <div className="bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg animate-fade-in-up">
+              <p className="text-lg italic text-gray-700 dark:text-gray-300 mb-6">
+                "La experiencia de Edwin en SAP S/4HANA fue crucial para el éxito de nuestra migración. Su enfoque práctico y su profundo conocimiento técnico nos dieron la confianza que necesitábamos."
+              </p>
+              <div className="flex items-center">
+                <img
+                  src="https://placehold.co/64x64/A3E635/1E1E1E?text=CL1" // Placeholder de cliente
+                  alt="Cliente 1"
+                  className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-[#A3E635]"
+                />
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-white">Ana García</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Gerente de Proyectos, MINSUR</p>
+                </div>
+              </div>
+            </div>
+            {/* Testimonio 2 */}
+            <div className="bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg animate-fade-in-up delay-100">
+              <p className="text-lg italic text-gray-700 dark:text-gray-300 mb-6">
+                "Edwin no solo implementó la solución, sino que también nos capacitó de manera excepcional. Su habilidad para simplificar conceptos complejos es admirable."
+              </p>
+              <div className="flex items-center">
+                <img
+                  src="https://placehold.co/64x64/0FAAFF/FFFFFF?text=CL2" // Placeholder de cliente
+                  alt="Cliente 2"
+                  className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-[#0FAAFF]"
+                />
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-white">Carlos Rivera</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Director de TI, ENERGÍA PERÚ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Blog o Insights Técnicos (Opcional) */}
+      <section id="blog" className="py-16 sm:py-24 bg-[#F5F5F5] dark:bg-[#1E1E1E] transition-colors duration-300">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white animate-fade-in">Insights Técnicos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Artículo de Blog 1 */}
+            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden animate-fade-in-up">
+              <img
+                src="https://placehold.co/600x400/0FAAFF/FFFFFF?text=SAP+Activate" // Placeholder de imagen de blog
+                alt="SAP Activate"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Guía Completa de SAP Activate para S/4HANA</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Publicado: 15 de Julio, 2025</p>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">Explora las fases y beneficios de la metodología SAP Activate para una implementación exitosa de S/4HANA.</p>
+                <a href="#" className="text-[#0FAAFF] hover:underline flex items-center">
+                  Leer más <IconChevronRight className="ml-1" size={16} />
+                </a>
+              </div>
+            </div>
+            {/* Artículo de Blog 2 */}
+            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden animate-fade-in-up delay-100">
+              <img
+                src="https://placehold.co/600x400/A3E635/1E1E1E?text=IA+en+SAP" // Placeholder de imagen de blog
+                alt="IA en SAP"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Automatización con IA en S/4HANA: Casos de Uso</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Publicado: 10 de Julio, 2025</p>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">Descubre cómo la inteligencia artificial está revolucionando la optimización de procesos en SAP S/4HANA.</p>
+                <a href="#" className="text-[#0FAAFF] hover:underline flex items-center">
+                  Leer más <IconChevronRight className="ml-1" size={16} />
+                </a>
+              </div>
+            </div>
+            {/* Artículo de Blog 3 */}
+            <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden animate-fade-in-up delay-200">
+              <img
+                src="https://placehold.co/600x400/1E1E1E/FFFFFF?text=Cloud+ALM" // Placeholder de imagen de blog
+                alt="Cloud ALM"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">SAP Cloud ALM: Gestión del Ciclo de Vida de Aplicaciones</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Publicado: 01 de Julio, 2025</p>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">Una inmersión profunda en las capacidades de SAP Cloud ALM para una gestión eficiente de tus soluciones.</p>
+                <a href="#" className="text-[#0FAAFF] hover:underline flex items-center">
+                  Leer más <IconChevronRight className="ml-1" size={16} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Contacto */}
+      <section id="contact" className="py-16 sm:py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white animate-fade-in">Contáctame</h2>
+          <div className="flex flex-col md:flex-row gap-12">
+            {/* Formulario de Contacto */}
+            <div className="md:w-2/3 bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg animate-fade-in-left">
+              <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Solicita una Asesoría Gratuita</h3>
+              <form className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-[#0FAAFF] focus:border-[#0FAAFF] bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
+                    placeholder="Tu Nombre"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Empresa</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    className="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-[#0FAAFF] focus:border-[#0FAAFF] bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
+                    placeholder="Tu Empresa"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Correo</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-[#0FAAFF] focus:border-[#0FAAFF] bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
+                    placeholder="tu.correo@ejemplo.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Mensaje</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    className="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-[#0FAAFF] focus:border-[#0FAAFF] bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
+                    placeholder="Describe tus necesidades de consultoría..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-[#0FAAFF] text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-600 transition-all duration-300 shadow-lg transform hover:scale-105"
+                >
+                  Solicitar Asesoría Gratuita
+                </button>
+              </form>
+            </div>
+
+            {/* Información de Contacto */}
+            <div className="md:w-1/3 bg-[#F5F5F5] dark:bg-gray-700 p-8 rounded-xl shadow-lg flex flex-col justify-center animate-fade-in-right">
+              <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Detalles de Contacto</h3>
+              <div className="space-y-4">
+                <div className="flex items-center text-gray-700 dark:text-gray-300">
+                  <IconMapPin className="mr-3 text-[#0FAAFF]" />
+                  <span>Lima, Perú</span>
+                </div>
+                <div className="flex items-center text-gray-700 dark:text-gray-300">
+                  <IconMessageCircle className="mr-3 text-[#0FAAFF]" />
+                  <span>+51 987 654 321 (WhatsApp Business)</span> {/* Número de ejemplo */}
+                </div>
+                <div className="flex items-center text-gray-700 dark:text-gray-300">
+                  <IconMail className="mr-3 text-[#0FAAFF]" />
+                  <span>contacto@edwinflores.com</span> {/* Correo de ejemplo */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#1E1E1E] text-gray-400 py-12 dark:bg-gray-900 transition-colors duration-300">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl text-center">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
+            <a href="#hero" className="hover:text-[#0FAAFF] transition-colors duration-300">Inicio</a>
+            <a href="#about" className="hover:text-[#0FAAFF] transition-colors duration-300">Sobre Mí</a>
+            <a href="#services" className="hover:text-[#0FAAFF] transition-colors duration-300">Servicios</a>
+            <a href="#projects" className="hover:text-[#0FAAFF] transition-colors duration-300">Proyectos</a>
+            <a href="#contact" className="hover:text-[#0FAAFF] transition-colors duration-300">Contacto</a>
+          </div>
+          <div className="flex justify-center gap-6 mb-8">
+            <a href="https://linkedin.com/in/edwinflores" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0FAAFF] transition-colors duration-300 transform hover:scale-110">
+              <IconLinkedIn />
+            </a>
+            <a href="https://github.com/edwinflores" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0FAAFF] transition-colors duration-300 transform hover:scale-110">
+              <IconGithub />
+            </a>
+          </div>
+          <p className="text-sm">&copy; {new Date().getFullYear()} Edwin Flores. Todos los derechos reservados.</p>
+          <div className="flex justify-center gap-4 mt-2 text-sm">
+            <a href="#" className="hover:text-[#0FAAFF] transition-colors duration-300">Política de Privacidad</a>
+            <a href="#" className="hover:text-[#0FAAFF] transition-colors duration-300">Términos de Servicio</a>
+          </div>
+        </div>
+      </footer>
+
+      {/* Estilos CSS para animaciones básicas (pueden ser extendidos en tailwind.config.js) */}
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+          from { opacity: 0; transform: translateX(-20px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+          from { opacity: 0; transform: translateX(20px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .animate-fade-in-left {
+          animation: fadeInLeft 0.8s ease-out forwards;
+        }
+        .animate-fade-in-right {
+          animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        /* Retrasos de animación */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+      `}</style>
+    </div>
+  );
+};
+
+export default function Home() {
+  const [darkMode, setDarkMode] = React.useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Iconos SVG
+  const IconLinkedIn = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin">
+      <path d="M16 8a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" />
+      <path d="M2.5 20h4v-8h-4z" />
+      <path d="M9.5 20h4v-8h-4z" />
+      <path d="M14.5 20h4v-8h-4z" />
+    </svg>
+  );
+
+  const IconGithub = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github">
+      <path d="M9.5 2a7.5 7.5 0 0 1 .5 14.9c-.3.1-.5-.1-.5-.4v-1.6c-2 .4-2.5-1-2.5-1s-.3-.7-.8-.9c-.7-.3.1-.3.1-.3s1 .1 1.6.8c.9.9.9 2 .9 2s1 .3 2 .3c1.7-.1 2.7-1.7 2.7-3a3.4 3.4 0 0 0-1-2c-.6-.6-1.4-.8-2.2-.8a3.6 3.6 0 0
